@@ -1,0 +1,34 @@
+1.	Check Python version 3.8+ is installed using python --version
+2.	Navigate to the project and open a command prompt
+3.	Start the seller with python seller.py. You should see output similar to [SellerNode] Now selling: oil (5 units)
+    [Seller] Running on 127.0.0.1:6010
+4.	Now open a new command prompt. Each new terminal is another buyer.
+5.	Start a buyer with python buyer.py and you will be assigned a buyer ID. You should now see:
+    [INFO] Assigned Buyer ID = 1
+
+    [SIGNAL] NEWITEM|potato|5
+
+    [SIGNAL] TIMELEFT|potato|60
+    Enter command (list/buy/exit):
+
+    Run multiple buyers by opening multiple terminals using different IDs for each.
+6.	As a buyer you can LIST the item for sale e.g.
+    Enter command (list/buy/exit): list
+    Enter command (list/buy/exit):
+    [SIGNAL] ITEM|potato|5
+7.	You can enter the buy option e.g.
+    Enter command (list/buy/exit): buy
+    Item: sugar
+    Amount: 1
+    Enter command (list/buy/exit):
+    [SIGNAL] UPDATE|sugar|4
+    [SIGNAL] CONFIRM|buyer 1 bought 1 of sugar from seller
+
+    When a purchase is made all active buyers will be sent an update of the new stock. The buyer that bought the item will receive a confirmation of the purchase.
+8.	If the stock is not sold out by the 60 second timer a new item will be put on the market and all buyers will be notified e.g.
+    [SIGNAL] NEWITEM|oil|5
+    [SIGNAL] TIMELEFT|oil|60
+9.	The buyer can also exit which disconnects the buyer e.g.
+    Enter command (list/buy/exit): exit
+    (base) johnmaguire@MacBookPro/Assignment %
+10.	 To stop the seller press CTRL + C in the seller window
